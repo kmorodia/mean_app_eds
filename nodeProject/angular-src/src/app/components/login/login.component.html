@@ -1,1 +1,28 @@
-<p>login works!</p>
+<div class="example-container">
+    <div class="form-container">
+    <br>
+    <br>
+    <br>
+    <form [formGroup]="myForm" (submit)="onLoginSubmit()">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Email
+          </mat-label>
+          <input matInput formControlName="email" required>
+          <mat-error *ngIf="email.invalid && email.touched">
+            Invalid Email
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Password
+          </mat-label>    
+          <input matInput formControlName="password" type="password">
+          <mat-error *ngIf="email.invalid && email.touched">
+            Empty Password
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button [disabled]="myForm.invalid" color="primary" type="submit">Log In</button>
+      </form>
+    </div>
+</div>
