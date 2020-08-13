@@ -11,7 +11,7 @@ const User = require('./models/users');
 const app = express();
 const employees = require('./routes/employees');
 
-const port = 4200;
+const port = 3000;
 
 //CORS middleware
 app.use(cors());
@@ -28,8 +28,6 @@ app.use(passport.session());
 
 require('./config/passport')(passport);
 
-app.use('/employees', employees);
-
 app.post('/authenticate', (req, res, next) => {
 	const username = req.body.username;
 	const password = req.body.password;
@@ -42,7 +40,7 @@ app.post('/authenticate', (req, res, next) => {
 		User.comparePassword(password, user.password, (isMatch) => {
 			if(isMatch){
 				const token = jwt.sign(user, config.secret, {
-
+					expiresIn: 604800
 				});
 
 				res.json({
@@ -57,6 +55,8 @@ app.post('/authenticate', (req, res, next) => {
 		});
 	});
 });
+
+app.use('/employees', employees);
 
 app.get('/', (req, res) => {
 	res.send('Login Page');
