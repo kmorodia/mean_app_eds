@@ -21,10 +21,11 @@ import { LoginComponent } from './components/login/login.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 
 import { AuthService } from './services/auth.service';
+import {AuthGuard} from './guards/auth.guard';
 
 const appRoutes: Routes = [
   {path:'', component: LoginComponent},
-  {path:'employee', component: EmployeeComponent}
+  {path:'employee', component: EmployeeComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({
@@ -47,7 +48,7 @@ const appRoutes: Routes = [
     MatCheckboxModule,
     MatChipsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

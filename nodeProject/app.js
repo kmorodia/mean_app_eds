@@ -45,8 +45,8 @@ app.post('/authenticate', (req, res, next) => {
 
 				res.json({
 					success: true,
-					token: 'JWT '+token
-					//user: user.emailid
+					token: 'bearer '+token,
+					user: user.emailid
 				});
 			}
 			else{

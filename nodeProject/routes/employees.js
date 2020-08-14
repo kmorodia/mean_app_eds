@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 
 
 router.get('/', passport.authenticate('jwt', {session:false}), (req, res, next) => {
-	res.send('employees');
+	res.send({"name":"employee", "content":"table"});
 });
 
 module.exports = router;

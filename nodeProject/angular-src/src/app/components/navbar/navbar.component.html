@@ -11,10 +11,13 @@
     </ul>
     <ul class="navbar-nav navbar-right">
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/']">Login</a>
+        <a *ngIf="authService.loggedIn()" class="nav-link" [routerLink]="['/employee']">Employee</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/employee']">Employee</a>
+        <a *ngIf="!authService.loggedIn()" class="nav-link" [routerLink]="['/']">Login</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="authService.loggedIn()"  class="nav-link" (click)="onLogoutClick()" [routerLink]="['/']">Logout</a>
       </li>
     </ul>
     </div>
