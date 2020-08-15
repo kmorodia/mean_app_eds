@@ -9,6 +9,7 @@ import{MatSelectModule} from '@angular/material/select';
 import{MatButtonModule} from '@angular/material/button';
 import{MatCheckboxModule} from '@angular/material/checkbox';
 import{MatChipsModule} from '@angular/material/chips';
+import{MatTableModule} from '@angular/material/table';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatChipsModule
+    MatChipsModule,
+    MatTableModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

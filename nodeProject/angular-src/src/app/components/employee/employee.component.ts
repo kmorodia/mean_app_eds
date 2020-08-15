@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
+import {TableStructure} from './tableStructure';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-employee',
@@ -10,19 +12,29 @@ import {Router} from '@angular/router';
 export class EmployeeComponent implements OnInit {
 
   user:Object;
+  element_data: TableStructure[];
+  displayedColumns: string[] = ['ID','Name', 'Salary', 'Age', 'Details'];
+  dataSource = new MatTableDataSource<TableStructure>(this.element_data);
+
   constructor(
     private authService:AuthService, private router:Router
   ) { }
 
   ngOnInit(): void {
     this.authService.getEmployeeTable().subscribe(employeeTable => {
-      console.log(employeeTable);
-      //this.user = employeeTable['user'];
+      //console.log(employeeTable['data']);
+      this.dataSource.data = employeeTable['data'] as TableStructure[];
     },
     err => {
       console.log(err);
       return false;
     });
+
   }
+
+  showDetails(rowDetils){
+    console.log(rowDetils);
+  }
+  
 
 }

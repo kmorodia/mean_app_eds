@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+//import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
@@ -18,8 +18,7 @@ export class AuthService {
   authenticateUser(user){
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/authenticate', user, {headers: headers})
-      .pipe(map((res: HttpResponse<JSON>) => res));
+    return this.http.post('http://localhost:3000/authenticate', user, {headers: headers});
   }
 
   getEmployeeTable(){
@@ -30,8 +29,7 @@ export class AuthService {
       headers=headers.append('Authorization', this.authToken);
     }
     console.log(headers);
-    return this.http.get('http://localhost:3000/employees', {headers: headers})
-      .pipe(map((res: HttpResponse<JSON>) => res));
+    return this.http.get('http://localhost:3000/employees', {headers: headers});
   }
 
   storeUserData(token, user){
@@ -55,5 +53,9 @@ export class AuthService {
     this.authToken = null;
     this.user = null;
     localStorage.clear();
+  }
+
+  getTable(){
+    return this.http.get('http://dummy.restapiexample.com/api/v1/employees');
   }
 }

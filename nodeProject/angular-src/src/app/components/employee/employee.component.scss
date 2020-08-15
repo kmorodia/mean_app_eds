@@ -1,0 +1,22 @@
+table{
+    width: 100%;
+}
+
+tr:nth-of-type(odd) {
+    background-color:#C0C0C0;
+}
+
+.mat-header-cell {
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mat-cell {
+    text-align: center;
+    justify-content:center;
+}
+
+.mat-button {
+    background: #6495ED;
+}
