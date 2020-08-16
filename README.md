@@ -12,8 +12,9 @@ valid username and passwords:
 - user2@gmail.com, password2
 
 ### For express app (inside nodeProject folder)
-angular app was built using the `ng build` command to *public* folder
+Angular files were *built* using the `ng build` command to *public* folder
 
+When inside the nodeProject folder,
 Install the dependencies:
 ```
 npm install
