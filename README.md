@@ -26,6 +26,7 @@ serve on localhost 4200:
 ng serve
 ```
 ## Features
+All mandatory requirements fulfilled including:
 - Login form (**localhost:3000**)
   - empty field validation
   - valid e-mail validation
