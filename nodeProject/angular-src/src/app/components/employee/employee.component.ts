@@ -34,7 +34,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   showDetails(rowDetils){
-    console.log(rowDetils);
+    //console.log(rowDetils);
   }
   
 

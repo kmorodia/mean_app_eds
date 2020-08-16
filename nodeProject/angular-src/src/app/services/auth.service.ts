@@ -29,7 +29,7 @@ export class AuthService {
     if(this.authToken != null){
       headers=headers.append('Authorization', this.authToken);
     }
-    console.log(headers);
+    //console.log(headers);
     return this.http.get('http://localhost:3000/employees', {headers: headers});
   }
 
@@ -59,7 +59,7 @@ export class AuthService {
   storeTable(eTable){
     localStorage.setItem('table', JSON.stringify(eTable));
     this.table = eTable;
-    console.log(this.table);
+    //console.log(this.table);
   }
 
   loadTable(){

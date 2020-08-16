@@ -50,7 +50,6 @@ app.post('/authenticate', (req, res, next) => {
 				});
 			}
 			else{
-				console.log("pw matched: "+ password + user.password);
 				return res.json({success: false, msg: 'Wrong Password'});
 			}
 		});
