@@ -23,7 +23,7 @@ export class EmployeeComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getEmployeeTable().subscribe(employeeTable => {
       //console.log(employeeTable['data']);
-      this.authService.table = employeeTable['data'];
+      this.authService.storeTable(employeeTable['data']);
       this.dataSource.data = employeeTable['data'] as TableStructure[];
     },
     err => {

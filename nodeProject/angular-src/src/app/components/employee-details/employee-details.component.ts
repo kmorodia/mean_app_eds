@@ -20,6 +20,8 @@ export class EmployeeDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.employeeID = parseInt(this.route.snapshot.paramMap.get('id'));
+    console.log(this.employeeID);
+    this.authService.loadTable();
     this.details = this.authService.table[this.employeeID-1];
     console.log(this.details);
   }

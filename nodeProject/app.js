@@ -56,7 +56,7 @@ app.post('/authenticate', (req, res, next) => {
 	});
 });
 
-app.use('/employees', employees);
+app.use('/employees', passport.authenticate('jwt', {session:false}), employees);
 
 app.get('/', (req, res) => {
 	res.send('Login Page');

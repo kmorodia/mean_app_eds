@@ -56,7 +56,15 @@ export class AuthService {
     localStorage.clear();
   }
 
-  getTable(){
-    return this.http.get('http://dummy.restapiexample.com/api/v1/employees');
+  storeTable(eTable){
+    localStorage.setItem('table', JSON.stringify(eTable));
+    this.table = eTable;
+    console.log(this.table);
   }
+
+  loadTable(){
+    const token = JSON.parse(localStorage.getItem('table'));
+    this.table = token;
+  }
+
 }
