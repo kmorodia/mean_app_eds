@@ -3,7 +3,13 @@
 - port **3000** used instead of **4200**
 - **localhost:3000/employee** instead of **localhost:3000/employees**
 
+## Demo
+https://youtu.be/lOeP_WCEybs
+
 ## Usage
+valid username and passwords:
+- user1@gmail.com, password1
+- user2@gmail.com, password2
 
 ### For express app (inside nodeProject folder)
 angular app was built using the `ng build` command to *public* folder
