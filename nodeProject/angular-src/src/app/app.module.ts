@@ -10,6 +10,7 @@ import{MatButtonModule} from '@angular/material/button';
 import{MatCheckboxModule} from '@angular/material/checkbox';
 import{MatChipsModule} from '@angular/material/chips';
 import{MatTableModule} from '@angular/material/table';
+import{MatCardModule} from '@angular/material/card';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -20,13 +21,17 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { EmployeeComponent } from './components/employee/employee.component';
+import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component';
 
 import { AuthService } from './services/auth.service';
 import {AuthGuard} from './guards/auth.guard';
+import { HighlightDirective } from './highlight.directive';
+import { AgepipePipe } from './agepipe.pipe';
 
 const appRoutes: Routes = [
   {path:'', component: LoginComponent},
-  {path:'employee', component: EmployeeComponent, canActivate:[AuthGuard]}
+  {path:'employee', component: EmployeeComponent, canActivate:[AuthGuard]},
+  {path:'employee/:id', component: EmployeeDetailsComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({
@@ -34,7 +39,10 @@ const appRoutes: Routes = [
     AppComponent,
     NavbarComponent,
     LoginComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    EmployeeDetailsComponent,
+    HighlightDirective,
+    AgepipePipe,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +56,8 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatCheckboxModule,
     MatChipsModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

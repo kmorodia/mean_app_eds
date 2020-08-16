@@ -10,7 +10,8 @@ export class AuthService {
   authToken: any;
   user: any;
   helper = new JwtHelperService();
-
+  table:Object;
+  
   constructor(
     private http:HttpClient
     ) { }

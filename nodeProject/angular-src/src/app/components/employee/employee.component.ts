@@ -11,18 +11,19 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class EmployeeComponent implements OnInit {
 
-  user:Object;
   element_data: TableStructure[];
   displayedColumns: string[] = ['ID','Name', 'Salary', 'Age', 'Details'];
   dataSource = new MatTableDataSource<TableStructure>(this.element_data);
 
   constructor(
-    private authService:AuthService, private router:Router
+    private authService:AuthService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
     this.authService.getEmployeeTable().subscribe(employeeTable => {
       //console.log(employeeTable['data']);
+      this.authService.table = employeeTable['data'];
       this.dataSource.data = employeeTable['data'] as TableStructure[];
     },
     err => {

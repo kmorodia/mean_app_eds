@@ -1,0 +1,15 @@
+<br>
+<div class="main-div">
+    <mat-card class="name-card">
+        <mat-card-header>
+            <mat-card-title appHighlight>
+                {{details['employee_name'] | uppercase}}
+            </mat-card-title>
+            <mat-card-subtitle>employeeID: {{details['id']}}</mat-card-subtitle>
+        </mat-card-header>    
+        <mat-card-content>
+            Salary: {{details['employee_salary'] | currency}} <br>
+            Age: {{details['employee_age'] | agepipe}}
+        </mat-card-content>
+    </mat-card>    
+</div>
