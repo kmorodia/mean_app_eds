@@ -39,7 +39,6 @@ app.post('/authenticate', (req, res, next) => {
 
 		User.comparePassword(password, user.password, (isMatch) => {
 			if(isMatch){
-				console.log("pw matched: "+ password + user.password);
 				const token = jwt.sign(user, config.secret, {
 					expiresIn: 604800
 				});
@@ -62,6 +61,10 @@ app.use('/employees', employees);
 
 app.get('/', (req, res) => {
 	res.send('Login Page');
+});
+
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 app.listen(port, () => {
