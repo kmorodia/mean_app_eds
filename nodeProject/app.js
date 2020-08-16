@@ -32,13 +32,14 @@ app.post('/authenticate', (req, res, next) => {
 	const username = req.body.username;
 	const password = req.body.password;
 
-	User.getUser((user) => {
+	User.getUser(username, (user) => {
 		if(!user){
 			return res.json({success: false, msg: 'User not found'});
 		}
 
 		User.comparePassword(password, user.password, (isMatch) => {
 			if(isMatch){
+				console.log("pw matched: "+ password + user.password);
 				const token = jwt.sign(user, config.secret, {
 					expiresIn: 604800
 				});
@@ -50,13 +51,14 @@ app.post('/authenticate', (req, res, next) => {
 				});
 			}
 			else{
+				console.log("pw matched: "+ password + user.password);
 				return res.json({success: false, msg: 'Wrong Password'});
 			}
 		});
 	});
 });
 
-app.use('/employees', passport.authenticate('jwt', {session:false}), employees);
+app.use('/employees', employees);
 
 app.get('/', (req, res) => {
 	res.send('Login Page');

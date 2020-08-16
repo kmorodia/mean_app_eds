@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     this.myForm = this.fb.group({
       email: ['',[
         Validators.required,
-        Validators.email
+        Validators.email,
       ]],
       password: ['', [
         Validators.required
@@ -50,8 +50,8 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['employee']);
       }
       else{
-        console.log('invalid credentials');
-        this.router.navigate(['']);
+        console.log(data);
+        this.router.navigate(['/']);
       }
     });
   }

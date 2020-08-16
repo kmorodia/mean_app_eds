@@ -4,7 +4,7 @@ const passport = require("passport");
 const jwt = require('jsonwebtoken');
 const http = require('http');
 
-router.get('/', (req, res, next) => {
+router.get('/', passport.authenticate('jwt', {session:false}), (req, res, next) => {
 	http.get('http://dummy.restapiexample.com/api/v1/employees', (resp) => {
 		let data = '';
 		resp.on('data', (chunk) => {
